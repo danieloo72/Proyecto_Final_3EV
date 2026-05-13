@@ -1,15 +1,12 @@
 let todasLasEscuderias = [];
 
-// Carga los datos del XML
-function cargarDatos() {
+// Carga inicial
+document.addEventListener("DOMContentLoaded", () => {
     fetch("data/data.xml")
-        .then(response => response.text())
+        .then(res => res.text())
         .then(data => {
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(data, "text/xml");
+            const xml = new DOMParser().parseFromString(data, "text/xml");
             const items = xml.getElementsByTagName("escuderia");
-
-            todasLasEscuderias = [];
             for (let item of items) {
                 todasLasEscuderias.push({
                     nombre: item.getElementsByTagName("nombre")[0].textContent,
@@ -19,54 +16,51 @@ function cargarDatos() {
             }
             mostrarTarjetas(todasLasEscuderias);
         });
-}
+});
 
-// Muestra las tarjetas
 function mostrarTarjetas(lista) {
-    const resultado = document.getElementById("resultado");
-    resultado.innerHTML = "";
-    
-    lista.forEach(escuderia => {
-        const divCard = document.createElement("div");
-        divCard.className = "card";
-
-        divCard.innerHTML = `
-            <h3>${escuderia.nombre}</h3>
-            <img src="${escuderia.imagen}" alt="${escuderia.nombre}">
-            <p>${escuderia.descripcion}</p> `;
-        resultado.appendChild(divCard);
+    const contenedor = document.getElementById("resultado");
+    contenedor.innerHTML = "";
+    lista.forEach(esc => {
+        contenedor.innerHTML += `
+            <div class="card h-100">
+                <img src="${esc.imagen}" class="card-img-top" alt="${esc.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title">${esc.nombre}</h5>
+                    <p class="card-text">${esc.descripcion}</p>
+                </div>
+            </div>`;
     });
 }
 
-// Filtrador de la busqueda de tarjetas
+// Buscador
 document.getElementById("btnBuscar").addEventListener("click", () => {
     const texto = document.getElementById("buscarEscuderia").value.toLowerCase();
-    const filtradas = todasLasEscuderias.filter(esc => 
-        esc.nombre.toLowerCase().includes(texto)
-    );
-    mostrarTarjetas(filtradas);
+    mostrarTarjetas(todasLasEscuderias.filter(esc => esc.nombre.toLowerCase().includes(texto)));
 });
 
-// Boton para buscar las tarjetas y borrarlas del buscador
 document.getElementById("borrarBusqueda").addEventListener("click", () => {
     document.getElementById("buscarEscuderia").value = "";
     mostrarTarjetas(todasLasEscuderias);
 });
 
-// Sistema para cambiar el color de fondo(claro, oscuro, personalizado)
-document.getElementById("selectorTema").addEventListener("change", (e) => {
-    const tema = e.target.value;
-    if (tema === "personalizado") {
-        document.getElementById("modalPersonalizado").style.display = "flex";
-    } else {
-        document.body.className = "modo-" + tema;
-        document.querySelector(".header").style.backgroundColor = "";
-        document.querySelector(".main-content").style.backgroundColor = "";
-        document.querySelector(".footer").style.backgroundColor = "";
-    }
+// Gestión de Temas
+document.querySelectorAll('.tema-option').forEach(opcion => {
+    opcion.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tema = e.target.getAttribute('data-value');
+        document.getElementById("btnDropdownTema").textContent = e.target.textContent;
+
+        if (tema === "personalizado") {
+            document.getElementById("modalPersonalizado").style.display = "flex";
+        } else {
+            document.body.className = "modo-" + tema;
+            // Limpiar estilos inline del modo personalizado
+            [".header", ".main-content", ".footer"].forEach(sel => document.querySelector(sel).style.backgroundColor = "");
+        }
+    });
 });
 
-// Aplicar los colores personalizados
 document.getElementById("btnAplicarColores").addEventListener("click", () => {
     document.querySelector(".header").style.backgroundColor = document.getElementById("colorHeader").value;
     document.querySelector(".main-content").style.backgroundColor = document.getElementById("colorMain").value;
@@ -74,36 +68,22 @@ document.getElementById("btnAplicarColores").addEventListener("click", () => {
     document.getElementById("modalPersonalizado").style.display = "none";
 });
 
-// Función para añadir una nueva tarjeta
-const modalAdd = document.getElementById("modalAdd");
-
-document.getElementById("btnAbrirAdd").addEventListener("click", () => {
-    modalAdd.style.display = "flex";
-});
-
-document.getElementById("btnCancelarAdd").addEventListener("click", () => {
-    modalAdd.style.display = "none";
-});
+// Añadir Escudería
+document.getElementById("btnAbrirAdd").addEventListener("click", () => document.getElementById("modalAdd").style.display = "flex");
+document.getElementById("btnCancelarAdd").addEventListener("click", () => document.getElementById("modalAdd").style.display = "none");
 
 document.getElementById("btnGuardar").addEventListener("click", () => {
     const nombre = document.getElementById("nuevoNombre").value;
     const desc = document.getElementById("nuevaDesc").value;
-    const archivoImg = document.getElementById("nuevaImg").files[0];
+    const archivo = document.getElementById("nuevaImg").files[0];
 
-    if (nombre && desc && archivoImg) {
-        let reader = new FileReader();
-        reader.onload = function(e) {
-            todasLasEscuderias.push({ 
-                nombre: nombre, 
-                descripcion: desc, 
-                imagen: e.target.result 
-            });
+    if (nombre && desc && archivo) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            todasLasEscuderias.push({ nombre, descripcion: desc, imagen: e.target.result });
             mostrarTarjetas(todasLasEscuderias);
-            modalAdd.style.display = "none";
+            document.getElementById("modalAdd").style.display = "none";
         };
-        reader.readAsDataURL(archivoImg);
+        reader.readAsDataURL(archivo);
     }
 });
-
-// Inicialización de la carga de datos
-document.addEventListener("DOMContentLoaded", cargarDatos);

@@ -5,7 +5,6 @@
     <title>Estadísticas F1 - Mi galería</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style_main.css">
-    <script src="Scripts/scripts.js" defer></script>
 </head>
 <body class="modo-claro">
     <!-- Contenedor con grid -->
@@ -15,20 +14,32 @@
             
             <!-- Busqueda y filtros -->
             <div class="controles">
-                <label>Buscar: </label>
-                <input type="text" id="buscarEscuderia" placeholder="Nombre de la escudería">
-                <button id="btnBuscar" type="button" class="btn btn-outline-danger">Buscar</button>
-                <button id="borrarBusqueda" type="button" class="btn btn-outline-danger">Borrar</button>
+                 <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid justify-content-center">
+                        <form class="d-flex" role="search">
+                            <input id="buscarEscuderia" class="form-control me-2" type="search" placeholder="Nombre de la escudería" aria-label="Search"/>
+                            <button id="btnBuscar" type="button" class="btn btn-outline-danger">Buscar</button>
+                            <button id="borrarBusqueda" type="button" class="btn btn-outline-danger">Borrar</button>
+                        </form>
+                    </div>
+                </nav>
             </div>
 
+            
+
             <!-- Seleccion de fondo y para añadir una nueva tarjeta -->
-            <div class="opciones">
-                <select id="selectorTema">
-                    <option value="claro">Modo Claro</option>
-                    <option value="oscuro">Modo Oscuro</option>
-                    <option value="personalizado">Personalizado</option>
-                </select>
-                 <button id="btnAbrirAdd" type="button" class="btn btn-outline-warning">Añadir Nueva</button>
+            <div class="opciones d-flex align-items-center gap-2">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btnDropdownTema">Seleccionar Tema</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item tema-option" href="#" data-value="claro">Modo Claro</a></li>
+                        <li><a class="dropdown-item tema-option" href="#" data-value="oscuro">Modo Oscuro</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item tema-option" href="#" data-value="personalizado">Personalizado</a></li>
+                    </ul>
+                </div>
+
+                <button id="btnAbrirAdd" type="button" class="btn btn-outline-warning">Añadir Nueva</button>
             </div>
         </header>
 
@@ -62,7 +73,9 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Proyecto Final 2EV - Lenguaje de Marcas - Daniel</p>
+        <p>Proyecto Final 3EV - Lenguaje de Marcas - Daniel</p>
     </footer>
+    <script src="Scripts/scripts.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
