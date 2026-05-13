@@ -4,36 +4,36 @@
     <escuderia>
         <nombre>Ferrari</nombre>
         <imagen>img/ferrari.jpg</imagen>
-        <descripcion>La escudería más laureada de la historia de la F1.</descripcion>
+        <descripcion>Combina su mística histórica con la potencia mediática de Charles Leclerc y el heptacampeón Lewis Hamilton.</descripcion>
     </escuderia>
 
-        <escuderia>
+    <escuderia>
         <nombre>Red Bull Racing</nombre>
         <imagen>img/redbull.jpg</imagen>
-        <descripcion>La escudería más laureada de la historia de la F1.</descripcion>
+        <descripcion>Se mantiene como una amenaza técnica constante gracias al talento puro y la agresividad de Max Verstappen.</descripcion>
     </escuderia>
 
-        <escuderia>
+    <escuderia>
         <nombre>Mercedes</nombre>
         <imagen>img/mercedes.jpg</imagen>
-        <descripcion>Referente de fiabilidad y tecnología híbrida.</descripcion>
+        <descripcion> Lidera el mundial 2026 apoyado en la sólida dupla de George Russell y el debutante Kimi Antonelli.</descripcion>
     </escuderia>
 
-        <escuderia>
+    <escuderia>
         <nombre>McLaren</nombre>
         <imagen>img/mclaren.jpg</imagen>
-        <descripcion>Equipo histórico en constante evolución técnica.</descripcion>
+        <descripcion>Defiende su reciente corona de constructores 2025 con la pareja más equilibrada de la parrilla: Norris y Piastri.</descripcion>
     </escuderia>
 
-        <escuderia>
+    <escuderia>
         <nombre>Aston Martin</nombre>
         <imagen>img/astonmartin.jpg</imagen>
-        <descripcion>El Nano</descripcion>
+        <descripcion>Se encuentra en un proceso de reestructuración técnica profunda para maximizar el talento de Fernando Alonso y Lance Stroll.</descripcion>
     </escuderia>
 
-        <escuderia>
+    <escuderia>
         <nombre>Williams Racing</nombre>
         <imagen>img/williams.jpg</imagen>
-        <descripcion>Un legado legendario buscando volver a la cima.</descripcion>
+        <descripcion>Continúa su camino de reconstrucción histórica, apoyándose en la consistencia de Alex Albon y el empuje de Franco Colapinto.</descripcion>
     </escuderia>
 </escuderias>

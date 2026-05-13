@@ -1,5 +1,6 @@
 let todasLasEscuderias = [];
 
+// Carga los datos del XML
 function cargarDatos() {
     fetch("data/data.xml")
         .then(response => response.text())
@@ -20,6 +21,7 @@ function cargarDatos() {
         });
 }
 
+// Muestra las tarjetas
 function mostrarTarjetas(lista) {
     const resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
@@ -31,43 +33,51 @@ function mostrarTarjetas(lista) {
         divCard.innerHTML = `
             <h3>${escuderia.nombre}</h3>
             <img src="${escuderia.imagen}" alt="${escuderia.nombre}">
-            <button class="btn-info">Ver Detalles</button>
-        `;
-
-        divCard.querySelector(".btn-info").onclick = () => {
-            document.getElementById("modalTitulo").innerText = escuderia.nombre;
-            document.getElementById("modalDescripcion").innerText = escuderia.descripcion;
-            document.getElementById("modalImagen").src = escuderia.imagen;
-            document.getElementById("modalEscuderia").showModal();
-        };
-
+            <p>${escuderia.descripcion}</p> `;
         resultado.appendChild(divCard);
     });
 }
 
-document.getElementById("buscarEscuderia").addEventListener("input", (e) => {
-    const texto = e.target.value.toLowerCase();
+// Filtrador de la busqueda de tarjetas
+document.getElementById("btnBuscar").addEventListener("click", () => {
+    const texto = document.getElementById("buscarEscuderia").value.toLowerCase();
     const filtradas = todasLasEscuderias.filter(esc => 
         esc.nombre.toLowerCase().includes(texto)
     );
     mostrarTarjetas(filtradas);
 });
 
+// Boton para buscar las tarjetas y borrarlas del buscador
 document.getElementById("borrarBusqueda").addEventListener("click", () => {
     document.getElementById("buscarEscuderia").value = "";
     mostrarTarjetas(todasLasEscuderias);
 });
 
+// Sistema para cambiar el color de fondo(claro, oscuro, personalizado)
 document.getElementById("selectorTema").addEventListener("change", (e) => {
     const tema = e.target.value;
-    if (tema !== "personalizado") {
+    if (tema === "personalizado") {
+        document.getElementById("modalPersonalizado").style.display = "flex";
+    } else {
         document.body.className = "modo-" + tema;
+        document.querySelector(".header").style.backgroundColor = "";
+        document.querySelector(".main-content").style.backgroundColor = "";
+        document.querySelector(".footer").style.backgroundColor = "";
     }
 });
 
+// Aplicar los colores personalizados
+document.getElementById("btnAplicarColores").addEventListener("click", () => {
+    document.querySelector(".header").style.backgroundColor = document.getElementById("colorHeader").value;
+    document.querySelector(".main-content").style.backgroundColor = document.getElementById("colorMain").value;
+    document.querySelector(".footer").style.backgroundColor = document.getElementById("colorFooter").value;
+    document.getElementById("modalPersonalizado").style.display = "none";
+});
+
+// Función para añadir una nueva tarjeta
 const modalAdd = document.getElementById("modalAdd");
 
-document.getElementById("btnAbrirModalAdd").addEventListener("click", () => {
+document.getElementById("btnAbrirAdd").addEventListener("click", () => {
     modalAdd.style.display = "flex";
 });
 
@@ -82,14 +92,12 @@ document.getElementById("btnGuardar").addEventListener("click", () => {
 
     if (nombre && desc && archivoImg) {
         let reader = new FileReader();
-        
         reader.onload = function(e) {
-            const nueva = {
-                nombre: nombre,
-                descripcion: desc,
-                imagen: e.target.result
-            };
-            todasLasEscuderias.push(nueva);
+            todasLasEscuderias.push({ 
+                nombre: nombre, 
+                descripcion: desc, 
+                imagen: e.target.result 
+            });
             mostrarTarjetas(todasLasEscuderias);
             modalAdd.style.display = "none";
         };
@@ -97,5 +105,5 @@ document.getElementById("btnGuardar").addEventListener("click", () => {
     }
 });
 
-document.getElementById("cerrarModal").onclick = () => document.getElementById("modalEscuderia").close();
+// Inicialización de la carga de datos
 document.addEventListener("DOMContentLoaded", cargarDatos);

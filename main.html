@@ -3,54 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Estadísticas F1 - Mi galería</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style_main.css">
     <script src="Scripts/scripts.js" defer></script>
 </head>
 <body class="modo-claro">
+    <!-- Contenedor con grid -->
     <div class="grid-layout">
         <header class="header">
             <h1>Galería de Escuderías F1</h1>
             
+            <!-- Busqueda y filtros -->
             <div class="controles">
                 <label>Buscar: </label>
                 <input type="text" id="buscarEscuderia" placeholder="Nombre de la escudería">
-                <button id="borrarBusqueda">Borrar</button>
+                <button id="btnBuscar" type="button" class="btn btn-outline-danger">Buscar</button>
+                <button id="borrarBusqueda" type="button" class="btn btn-outline-danger">Borrar</button>
             </div>
 
+            <!-- Seleccion de fondo y para añadir una nueva tarjeta -->
             <div class="opciones">
                 <select id="selectorTema">
                     <option value="claro">Modo Claro</option>
                     <option value="oscuro">Modo Oscuro</option>
                     <option value="personalizado">Personalizado</option>
                 </select>
-                <button id="btnAbrirModalAdd">Añadir Nueva</button>
+                 <button id="btnAbrirAdd" type="button" class="btn btn-outline-warning">Añadir Nueva</button>
             </div>
         </header>
 
+        <!-- Contenedor donde aparecen las tarjetas nuevas -->
         <main id="resultado" class="main-content"></main>
-
     </div>
 
-    <dialog id="modalEscuderia">
-        <h2 id="modalTitulo">Nombre</h2>
-        <img id="modalImagen" src="">
-        <hr>
-        <p><strong>Descripción:</strong></p>
-        <p id="modalDescripcion"></p>
-        <button id="cerrarModal">Cerrar</button>
-    </dialog>
-
-    <div id="modalAdd" class="fondo-personalizado">
+    <!-- Modal de personalizacion del fondo -->
+    <div id="modalPersonalizado" class="modal-personalizado">
         <div class="modal-box">
-            <h3>Nueva Escudería</h3>
-            <input type="text" id="nuevoNombre" placeholder="Nombre">
-            <textarea id="nuevaDesc" placeholder="Descripción"></textarea>
-            <input type="file" id="nuevaImg" accept="image/*">
-            <button id="btnGuardar">Guardar Escudería</button>
-            <button id="btnCancelarAdd">Cancelar</button>
+            <h3>Elegir Colores</h3>
+            <label>Color Header: <input type="color" id="colorHeader" value="#e10600"></label>
+            <label>Color Main: <input type="color" id="colorMain" value="#ffffff"></label>
+            <label>Color Footer: <input type="color" id="colorFooter" value="#f8f8f8"></label>
+            <button id="btnAplicarColores">Aplicar</button>
+            <button onclick="document.getElementById('modalPersonalizado').style.display='none'">Cancelar</button>
         </div>
     </div>
 
+    <!-- Modal de añadir nuevas tarjetas -->
     <div id="modalAdd" class="modal-personalizado">
         <div class="modal-box">
             <h3>Nueva Escudería</h3>
@@ -61,9 +59,10 @@
             <button id="btnCancelarAdd">Cancelar</button>
         </div>
     </div>
-        <footer class="footer">
-            <p>Proyecto Final - Lenguaje de Marcas 2026</p>
-            <button onclick="window.location.href='index.html'">Volver al Inicio</button>
-        </footer>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Proyecto Final 2EV - Lenguaje de Marcas - Daniel</p>
+    </footer>
 </body>
 </html>
