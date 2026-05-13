@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas F1 - Mi galería</title>
+    <link rel="stylesheet" href="styles/style_main.css">
+    <script src="Scripts/scripts.js" defer></script>
+</head>
+<body class="modo-claro">
+    <div class="grid-layout">
+        <header class="header">
+            <h1>Galería de Escuderías F1</h1>
+            
+            <div class="controles">
+                <label>Buscar: </label>
+                <input type="text" id="buscarEscuderia" placeholder="Nombre de la escudería">
+                <button id="borrarBusqueda">Borrar</button>
+            </div>
+
+            <div class="opciones">
+                <select id="selectorTema">
+                    <option value="claro">Modo Claro</option>
+                    <option value="oscuro">Modo Oscuro</option>
+                    <option value="personalizado">Personalizado</option>
+                </select>
+                <button id="btnAbrirModalAdd">Añadir Nueva</button>
+            </div>
+        </header>
+
+        <main id="resultado" class="main-content"></main>
+
+    </div>
+
+    <dialog id="modalEscuderia">
+        <h2 id="modalTitulo">Nombre</h2>
+        <img id="modalImagen" src="">
+        <hr>
+        <p><strong>Descripción:</strong></p>
+        <p id="modalDescripcion"></p>
+        <button id="cerrarModal">Cerrar</button>
+    </dialog>
+
+    <div id="modalAdd" class="fondo-personalizado">
+        <div class="modal-box">
+            <h3>Nueva Escudería</h3>
+            <input type="text" id="nuevoNombre" placeholder="Nombre">
+            <textarea id="nuevaDesc" placeholder="Descripción"></textarea>
+            <input type="file" id="nuevaImg" accept="image/*">
+            <button id="btnGuardar">Guardar Escudería</button>
+            <button id="btnCancelarAdd">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="modalAdd" class="modal-personalizado">
+        <div class="modal-box">
+            <h3>Nueva Escudería</h3>
+            <input type="text" id="nuevoNombre" placeholder="Nombre">
+            <textarea id="nuevaDesc" placeholder="Descripción"></textarea>
+            <input type="file" id="nuevaImg" accept="image/*">
+            <button id="btnGuardar">Guardar Escudería</button>
+            <button id="btnCancelarAdd">Cancelar</button>
+        </div>
+    </div>
+        <footer class="footer">
+            <p>Proyecto Final - Lenguaje de Marcas 2026</p>
+            <button onclick="window.location.href='index.html'">Volver al Inicio</button>
+        </footer>
+</body>
+</html>

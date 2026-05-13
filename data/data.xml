@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE escuderias SYSTEM "escuderias.xsd">
+<escuderias>
+    <escuderia>
+        <nombre>Ferrari</nombre>
+        <imagen>img/ferrari.jpg</imagen>
+        <descripcion>La escudería más laureada de la historia de la F1.</descripcion>
+    </escuderia>
+
+        <escuderia>
+        <nombre>Red Bull Racing</nombre>
+        <imagen>img/redbull.jpg</imagen>
+        <descripcion>La escudería más laureada de la historia de la F1.</descripcion>
+    </escuderia>
+
+        <escuderia>
+        <nombre>Mercedes</nombre>
+        <imagen>img/mercedes.jpg</imagen>
+        <descripcion>Referente de fiabilidad y tecnología híbrida.</descripcion>
+    </escuderia>
+
+        <escuderia>
+        <nombre>McLaren</nombre>
+        <imagen>img/mclaren.jpg</imagen>
+        <descripcion>Equipo histórico en constante evolución técnica.</descripcion>
+    </escuderia>
+
+        <escuderia>
+        <nombre>Aston Martin</nombre>
+        <imagen>img/astonmartin.jpg</imagen>
+        <descripcion>El Nano</descripcion>
+    </escuderia>
+
+        <escuderia>
+        <nombre>Williams Racing</nombre>
+        <imagen>img/williams.jpg</imagen>
+        <descripcion>Un legado legendario buscando volver a la cima.</descripcion>
+    </escuderia>
+</escuderias>
