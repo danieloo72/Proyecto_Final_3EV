@@ -148,7 +148,6 @@ dialog {
     color: white;
 }
 
-/* Elimina el fondo blanco/gris del buscador en modo oscuro */
 .modo-oscuro .navbar {
     background-color: transparent !important;
     border: none !important;
@@ -167,33 +166,29 @@ dialog {
 .opciones {
     margin-top: 15px;
     display: flex;
-    justify-content: center; /* Centra el dropdown y el botón */
+    justify-content: center;
     align-items: center;
-    gap: 10px; /* Espacio entre el dropdown y el botón de añadir */
+    gap: 10px;
 }
 
-/* Asegura que el botón del dropdown tenga el mismo estilo visual de altura que los demás */
 #btnDropdownTema {
     padding: 10px 20px;
     font-weight: bold;
 }
 
-/* --- Sincronización del Dropdown con el Tema --- */
-
 /* Estilo base para el botón del selector */
 #btnDropdownTema {
-    background-color: transparent !important; /* Se funde con el fondo del header */
-    border: 1px solid currentColor !important; /* El borde toma el color del texto automáticamente */
+    background-color: transparent !important;
+    border: 1px solid currentColor !important;
     transition: all 0.3s ease;
 }
 
-/* Modo Claro: Sincroniza con el fondo #f8f8f8 y texto #333 */
 .modo-claro #btnDropdownTema {
     color: #333 !important;
 }
 
 .modo-claro .dropdown-menu {
-    background-color: #ffffff !important; /* Fondo blanco para el menú */
+    background-color: #ffffff !important;
     border: 1px solid #ddd;
 }
 
@@ -201,13 +196,12 @@ dialog {
     color: #333 !important;
 }
 
-/* Modo Oscuro: Sincroniza con el fondo #1a1a1a y texto blanco */
 .modo-oscuro #btnDropdownTema {
     color: white !important;
 }
 
 .modo-oscuro .dropdown-menu {
-    background-color: #1a1a1a !important; /* Fondo igual al header oscuro */
+    background-color: #1a1a1a !important;
     border: 1px solid #444;
 }
 
@@ -215,7 +209,6 @@ dialog {
     color: white !important;
 }
 
-/* Estilo común para el hover de las opciones (Rojo F1) */
 .dropdown-item:hover {
     background-color: #e10600 !important;
     color: white !important;

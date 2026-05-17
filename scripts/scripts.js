@@ -55,7 +55,6 @@ document.querySelectorAll('.tema-option').forEach(opcion => {
             document.getElementById("modalPersonalizado").style.display = "flex";
         } else {
             document.body.className = "modo-" + tema;
-            // Limpiar estilos inline del modo personalizado
             [".header", ".main-content", ".footer"].forEach(sel => document.querySelector(sel).style.backgroundColor = "");
         }
     });
